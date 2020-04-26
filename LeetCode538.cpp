@@ -1,0 +1,29 @@
+/*************************************************************************
+	> File Name: LeetCode538.cpp
+	> Author: 
+	> Mail: 
+	> Created Time: 2020年04月26日 星期日 23时57分44秒
+ ************************************************************************/
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int sum= 0;
+    TreeNode* convertBST(TreeNode* root) {
+        if(root != nullptr){
+            convertBST(root->right);
+            sum += root->val;
+            root->val = sum;
+            convertBST(root->left);
+            return root;
+        }
+        return root;
+    }
+};
